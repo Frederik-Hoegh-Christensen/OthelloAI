@@ -2,7 +2,7 @@ import java.util.Date;
 
 public class AI implements IOthelloAI {
     
-    public int maxDepth = 5;
+    public int maxDepth = 6;
     public int cornerWeight = 3;
     public int edgeWeight = 2;
 
@@ -93,6 +93,7 @@ public class AI implements IOthelloAI {
         var white = tokens[1];
 
         var eval = black - white;
+        eval = eval + nextToEdge(s);
         eval = WeighCornerTokens(s, eval);
         eval = WeighEdgeTokens(s, eval);
 
@@ -100,6 +101,59 @@ public class AI implements IOthelloAI {
         if ((black + white) < (s.getBoard().length / 4)) 
             return -eval;
         return eval;
+    }
+
+    private int nextToEdge(GameState s) {
+        int length = s.getBoard().length;
+        int[][] board = s.getBoard();
+        int eval = 0;
+
+        // check if white has pos next to corners 
+        if (board[0][1] == 2) 
+            eval = eval - cornerWeight;
+        if (board[1][0] == 2) 
+            eval = eval - cornerWeight;
+        if (board[0][length-2] == 2) 
+            eval = eval - cornerWeight;
+        if (board[1][length-1] == 2) 
+            eval = eval - cornerWeight;
+        if (board[length-2][0] == 2) 
+            eval = eval - cornerWeight;
+        if (board[length-2][length-1] == 2) 
+            eval = eval - cornerWeight;
+        if (board[length-1][1] == 2) 
+            eval = eval - cornerWeight;
+        if (board[length-1][length-2] == 2) 
+            eval = eval - cornerWeight;
+
+        // check if black has pos next to corners 
+        if (board[0][1] == 1) 
+            eval = eval - cornerWeight;
+        if (board[1][0] == 1) 
+            eval = eval - cornerWeight;
+        if (board[0][length-2] == 1) 
+            eval = eval - cornerWeight;
+        if (board[1][length-1] == 1) 
+            eval = eval - cornerWeight;
+        if (board[length-2][0] == 1) 
+            eval = eval - cornerWeight;
+        if (board[length-2][length-1] == 1) 
+            eval = eval - cornerWeight;
+        if (board[length-1][1] == 1) 
+            eval = eval - cornerWeight;
+        if (board[length-1][length-2] == 1) 
+            eval = eval - cornerWeight;
+
+        for (int i = 2; i < length-3; i++) {
+            if (board[2][i] == 2 || board[length-3][i] == 2 || board[i][2] == 2 || board[i][length-3] == 2) { // white not in good place
+                eval = eval - edgeWeight;
+            }
+            else if (board[2][i] == 1 || board[length-3][i] == 1 || board[i][2] == 1 || board[i][length-3] == 1) { // black not in good place
+                eval = eval + edgeWeight;
+            }
+        }
+        return eval;
+
     }
 
     private int WeighCornerTokens(GameState s, int eval){
