@@ -2,7 +2,7 @@ import java.util.Date;
 
 public class AI implements IOthelloAI {
     
-    public int maxDepth = 7;
+    public int maxDepth = 4;
     public int cornerWeight = 3;
     public int edgeWeight = 2;
     public boolean max = false;
