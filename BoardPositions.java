@@ -1,29 +1,35 @@
-public class BoardPositions {
-    private static int[][] corners = null;
-    private static int[][] edges = null;
+import java.util.ArrayList;
 
-    public static int[][] getCorners(int size) {
+public class BoardPositions {
+    private static ArrayList<Position> corners = null;
+    private static ArrayList<Position> edges = null;
+
+    public static ArrayList<Position> getCorners(int size) {
         if (corners == null) generateCorners(size);
         return corners;
     }
 
     public static void generateCorners(int size) {
-        corners = new int[][] {
-            {0, 0},
-            {0, size-1},
-            {size-1, 0},
-            {size-1, size-1},
-        };
+        
+        corners = new ArrayList<>();
+        corners.add(new Position(0, 0));
+        corners.add(new Position(0, size-1));
+        corners.add(new Position(size-1, 0));
+        corners.add(new Position(size-1, size-1));
     }
 
-    public static int[][] getEdges(int size) {
+    public static ArrayList<Position> getEdges(int size) {
         if (edges == null) generateEdges(size);
         return edges;
     }
 
     public static void generateEdges(int size) {
-        for (int x = 1; x < size-2; x++) {
-            
+        edges = new ArrayList<>();
+        for (int x = 2; x < size-3; x++) {
+            edges.add(new Position(x, 0));
+            edges.add(new Position(x, size-1));
+            edges.add(new Position(0, x));
+            edges.add(new Position(size-1, x));
         }
     }
     

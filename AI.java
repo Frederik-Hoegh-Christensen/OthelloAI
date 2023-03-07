@@ -1,10 +1,8 @@
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 
 public class AI implements IOthelloAI {
     
-    public int maxDepth = 8;
+    public int maxDepth = 5;
     public int cornerWeight = 3;
     public int edgeWeight = 2;
 
@@ -96,6 +94,7 @@ public class AI implements IOthelloAI {
 
         var eval = black - white;
         eval = WeighCornerTokens(s, eval);
+        eval = WeighEdgeTokens(s, eval);
 
 
         if ((black + white) < (s.getBoard().length / 4)) 
@@ -109,13 +108,27 @@ public class AI implements IOthelloAI {
 
         var corners = BoardPositions.getCorners(size);
         
-        for (int[] currentRow : corners) {
-            if(board[currentRow[0]][currentRow[1]] == 1) eval -= cornerWeight;
-            else if(board[currentRow[0]][currentRow[1]] == 2) eval += cornerWeight;
+        for (Position position : corners) {
+            var currentToken = board[position.col][position.row];
+            if(currentToken == 1) eval -= cornerWeight;
+            else if(currentToken == 2) eval += cornerWeight;
         }
 
         return eval;
     }
     
+    private int WeighEdgeTokens(GameState s, int eval) {
+        int size = s.getBoard().length;
+        int[][] board = s.getBoard();
+
+        var edges = BoardPositions.getEdges(size);
+
+        for (Position position : edges) {
+            var currentToken = board[position.col][position.row];
+            if(currentToken == 1) eval -= edgeWeight;
+            else if(currentToken == 2) eval += edgeWeight;
+        }
+        return eval;
+    }
 }
 
