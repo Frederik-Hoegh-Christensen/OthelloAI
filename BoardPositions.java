@@ -21,10 +21,10 @@ public class BoardPositions {
         return edges;
     }
 
-    /*public static void generateEdges(int size) {
+    public static void generateEdges(int size) {
         for (int x = 1; x < size-2; x++) {
-            edges[x][0] = 
+            
         }
     }
-    */
+    
 }
