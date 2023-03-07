@@ -1,13 +1,32 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+/**
+ * This class is a statistical tool we used for experimenting with different settings,
+ * running many games without having to restart each.
+ */
 public class OthelloStatistic {
     public static void main(String[] args) {
-        int size = 8;				// Number of rows and columns on the board
-        IOthelloAI ai1 = new DumAI();			// The AI for player 1 if there are no human player
-        IOthelloAI ai2 = new AI();			// The AI for player 2
-        int numberOfGames = 100;
-        int blackWon = 0;
-        int whiteWon = 0;
-        int draws = 0;
+        int aiDepth = 7;
+        for (int i = 0; i < aiDepth; i++) {
+            playGames(i+1);
+        }
+        
+    }
 
+    private static void playGames(int depth) {
+        int size = 8;				        // Number of rows and columns on the board
+        IOthelloAI ai1 = new DumAI();	    // The AI for player 1
+        IOthelloAI ai2 = new AI(depth);			// The AI for player 2
+        int numberOfGames = 20;            // Number of games to be simulated
+        int blackWon = 0;                   // Counter for black wins
+        int whiteWon = 0;                   // Counter for white wins
+        int draws = 0;                      // Counter for draws
+        int averageWhiteTokens = 0;
+        int averageBlackTokens = 0;
+        boolean writeToFile = true;        // Set to true if you want to write to ./statistics/Statistics.txt
 
         for (int i = 0; i < numberOfGames; i++) {
             System.out.printf("Playing game %d\n", i+1);
@@ -15,19 +34,19 @@ public class OthelloStatistic {
 
             while (!state.isFinished()) {
                 if (state.legalMoves().isEmpty()) state.changePlayer();
-                Position move = null;
+                Position move;
                 if (state.getPlayerInTurn() == 1) {
-                    System.out.println("Black's turn");
+                    //System.out.println("Black's turn");
                     move = ai1.decideMove(state);
                 }
                 else {
-                    System.out.println("White's turn");
+                    //System.out.println("White's turn");
                     move = ai2.decideMove(state);
                 }
                 state.insertToken(move);
             }
             int[] terminalState = state.countTokens();
-            //black won
+
             if(terminalState[0] > terminalState[1]) {
                 blackWon++;
             }
@@ -35,7 +54,33 @@ public class OthelloStatistic {
                 whiteWon++;
             }
             else draws++;
+
+            averageWhiteTokens += terminalState[1];
+            averageBlackTokens += terminalState[0];
         }
-        System.out.printf("---------\nBlack won: %d\nWhite won: %d\nDraws: %d\n", blackWon,whiteWon,draws);
+        averageWhiteTokens = averageWhiteTokens/numberOfGames;
+        averageBlackTokens = averageBlackTokens/numberOfGames;
+
+
+        // Handles printing and file writing
+        if(!writeToFile) {
+            System.out.printf("---------\nAI Depth %d\nBlack won: %d\nWhite won: %d\nDraws: %d\n", ((AI) ai2).maxDepth, blackWon,whiteWon,draws);
+            System.out.printf("The average number of white tokens at the end of a game was: %d\n", averageWhiteTokens);
+            System.out.printf("The average number of black tokens at the end of a game was: %d\n", averageBlackTokens);
+        }
+        else {
+            try {
+                FileWriter writer = new FileWriter("./statistics/Statistics.txt", true);
+                var bf = new BufferedWriter(writer);
+                PrintWriter out = new PrintWriter(bf);
+                out.print(String.format("---------\nAI Depth %d\nBlack won: %d\nWhite won: %d\nDraws: %d\n", depth, blackWon,whiteWon,draws));
+                out.print(String.format("The average number of white tokens at the end of a game was: %d\n", averageWhiteTokens));
+                out.print(String.format("The average number of black tokens at the end of a game was: %d\n", averageBlackTokens));
+                bf.close();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
     }
 }

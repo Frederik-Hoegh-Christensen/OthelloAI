@@ -1,0 +1,49 @@
+---------
+AI Depth 1
+Black won: 0
+White won: 20
+Draws: 0
+The average number of white tokens at the end of a game was: 59
+The average number of black tokens at the end of a game was: 5
+---------
+AI Depth 2
+Black won: 0
+White won: 20
+Draws: 0
+The average number of white tokens at the end of a game was: 51
+The average number of black tokens at the end of a game was: 13
+---------
+AI Depth 3
+Black won: 0
+White won: 20
+Draws: 0
+The average number of white tokens at the end of a game was: 38
+The average number of black tokens at the end of a game was: 26
+---------
+AI Depth 4
+Black won: 0
+White won: 20
+Draws: 0
+The average number of white tokens at the end of a game was: 38
+The average number of black tokens at the end of a game was: 26
+---------
+AI Depth 5
+Black won: 0
+White won: 20
+Draws: 0
+The average number of white tokens at the end of a game was: 53
+The average number of black tokens at the end of a game was: 11
+---------
+AI Depth 6
+Black won: 0
+White won: 20
+Draws: 0
+The average number of white tokens at the end of a game was: 59
+The average number of black tokens at the end of a game was: 5
+---------
+AI Depth 7
+Black won: 0
+White won: 20
+Draws: 0
+The average number of white tokens at the end of a game was: 54
+The average number of black tokens at the end of a game was: 1
