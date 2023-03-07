@@ -2,14 +2,17 @@ import java.util.Date;
 
 public class AI implements IOthelloAI {
     
-    public int maxDepth = 6;
+    public int maxDepth = 7;
     public int cornerWeight = 3;
     public int edgeWeight = 2;
+    public boolean max = false;
 
     @Override
     public Position decideMove(GameState s) {
         GameState newState = new GameState(s.getBoard(), s.getPlayerInTurn());
+        max = s.getPlayerInTurn() == 2;
         return miniMaxSearch(newState, 0);
+
     }
     
     private class Pair {
@@ -99,8 +102,9 @@ public class AI implements IOthelloAI {
 
 
         if ((black + white) < (s.getBoard().length / 4)) 
-            return -eval;
-        return eval;
+            return max ? -eval : eval;
+
+        return max ? eval : -eval;
     }
 
     private int nextToEdge(GameState s) {
