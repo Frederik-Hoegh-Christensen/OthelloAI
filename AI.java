@@ -5,15 +5,16 @@ public class AI implements IOthelloAI {
     public int maxDepth = 7;
     public int cornerWeight = 3;
     public int edgeWeight = 2;
-
+    public Timer timer;
     private boolean max = false;
     
     public AI() {
-
+        timer = new Timer();
     }
 
-    public AI(int maxDepth) {
+    public AI(int maxDepth, Timer timer) {
         this.maxDepth = maxDepth;
+        this.timer = timer;
     }
 
     @Override
@@ -43,8 +44,8 @@ public class AI implements IOthelloAI {
         // Used for timing
         Date end = new Date();
         //Print timings
-        System.out.println("Timer: " + Timer.addTime(start, end) + " miliseconds");
-        System.out.println("Average: " + Timer.getAverage() + " miliseconds");
+        System.out.println("Timer: " + timer.addTime(start, end) + " miliseconds");
+        System.out.println("Average: " + timer.getAverage() + " miliseconds");
         return pair.move;
     }
 

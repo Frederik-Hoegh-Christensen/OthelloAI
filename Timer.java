@@ -2,19 +2,32 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Timer {
-    public static ArrayList<Long> times = new ArrayList<>();
+    private ArrayList<Long> times = new ArrayList<>();
+    private long maxTime = Integer.MIN_VALUE;
+    private long minTime = Integer.MAX_VALUE;
 
-    public static long addTime(Date start, Date end) {
+    public long addTime(Date start, Date end) {
         long diff = end.getTime() - start.getTime();
+        maxTime = diff > maxTime ? diff : maxTime;
+        minTime = diff < minTime ? diff : minTime;
         times.add(diff);
         return diff;
     }
     
-    public static long getAverage() {
+    public long getAverage() {
         long sum = 0;
         for (long time : times) {
             sum += time;
         }
         return sum / times.size();
     }
+
+    public long getMinTime() {
+        return minTime;
+    }
+
+    public long getMaxTime() {
+        return maxTime;
+    }
+    
 }

@@ -1,10 +1,12 @@
----------
 AI Depth 1
 Black won: 0
 White won: 20
 Draws: 0
 The average number of white tokens at the end of a game was: 59
 The average number of black tokens at the end of a game was: 5
+The average time it took for a search was: 0
+The maximum time it took for a search was: 1
+The minimum time it took for a search was: 0
 ---------
 AI Depth 2
 Black won: 0
@@ -12,6 +14,9 @@ White won: 20
 Draws: 0
 The average number of white tokens at the end of a game was: 51
 The average number of black tokens at the end of a game was: 13
+The average time it took for a search was: 0
+The maximum time it took for a search was: 2
+The minimum time it took for a search was: 0
 ---------
 AI Depth 3
 Black won: 0
@@ -19,6 +24,9 @@ White won: 20
 Draws: 0
 The average number of white tokens at the end of a game was: 38
 The average number of black tokens at the end of a game was: 26
+The average time it took for a search was: 0
+The maximum time it took for a search was: 3
+The minimum time it took for a search was: 0
 ---------
 AI Depth 4
 Black won: 0
@@ -26,6 +34,9 @@ White won: 20
 Draws: 0
 The average number of white tokens at the end of a game was: 38
 The average number of black tokens at the end of a game was: 26
+The average time it took for a search was: 1
+The maximum time it took for a search was: 8
+The minimum time it took for a search was: 0
 ---------
 AI Depth 5
 Black won: 0
@@ -33,6 +44,9 @@ White won: 20
 Draws: 0
 The average number of white tokens at the end of a game was: 53
 The average number of black tokens at the end of a game was: 11
+The average time it took for a search was: 8
+The maximum time it took for a search was: 22
+The minimum time it took for a search was: 0
 ---------
 AI Depth 6
 Black won: 0
@@ -40,6 +54,9 @@ White won: 20
 Draws: 0
 The average number of white tokens at the end of a game was: 59
 The average number of black tokens at the end of a game was: 5
+The average time it took for a search was: 32
+The maximum time it took for a search was: 239
+The minimum time it took for a search was: 0
 ---------
 AI Depth 7
 Black won: 0
@@ -47,3 +64,6 @@ White won: 20
 Draws: 0
 The average number of white tokens at the end of a game was: 54
 The average number of black tokens at the end of a game was: 1
+The average time it took for a search was: 108
+The maximum time it took for a search was: 707
+The minimum time it took for a search was: 0
