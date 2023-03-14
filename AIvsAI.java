@@ -3,13 +3,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-/**
- * This class is a statistical tool we used for experimenting with different settings,
- * running many games without having to restart each.
- */
-public class OthelloStatistic {
+public class AIvsAI {
     public static void main(String[] args) {
-        int aiDepth = 8;
+        int blackDepth = Integer.parseInt(args[0]);
+        int whiteDepth = Integer.parseInt(args[1]);
 
         //To disable iterative simulations from depth 1 to aiDepth, comment this for loop out
         // for (int i = 0; i < aiDepth; i++) {
@@ -17,15 +14,16 @@ public class OthelloStatistic {
         // }
         
         // And remove the comment below
-        playGames(aiDepth);
+        playGames(blackDepth, whiteDepth);
         
     }
 
-    private static void playGames(int depth) {
+    private static void playGames(int ai1Depth, int ai2Depth) {
         int size = 8;				        // Number of rows and columns on the board
-        Timer aiTimer = new Timer();
-        IOthelloAI ai1 = new DumAI();	    // The AI for player 1
-        IOthelloAI ai2 = new AI(depth, aiTimer);			// The AI for player 2
+        Timer ai1Timer = new Timer();
+        Timer ai2Timer = new Timer();
+        IOthelloAI black = new AI(ai1Depth, ai1Timer);	    // The AI for player 1
+        IOthelloAI white = new AI(ai2Depth, ai2Timer);			// The AI for player 2
         int numberOfGames = 1;            // Number of games to be simulated
         int blackWon = 0;                   // Counter for black wins
         int whiteWon = 0;                   // Counter for white wins
@@ -35,21 +33,26 @@ public class OthelloStatistic {
         boolean writeToFile = false;        // Set to true if you want to write to ./statistics/Statistics.txt
 
         for (int i = 0; i < numberOfGames; i++) {
-            System.out.printf("Playing game %d\n", i+1);
+            //System.out.printf("Playing game %d\n", i+1);
             GameState state = new GameState(size, 1);
 
             while (!state.isFinished()) {
-                if (state.legalMoves().isEmpty()) state.changePlayer();
-                Position move;
+                //System.out.println(state.legalMoves().size());
+                if (state.legalMoves().isEmpty()) {
+                    //System.out.println("No legal moves, changing player");
+                    state.changePlayer();
+                }
+                Position move = null;
                 if (state.getPlayerInTurn() == 1) {
                     //System.out.println("Black's turn");
-                    move = ai1.decideMove(state);
+                    move = black.decideMove(state);
                 }
                 else {
                     //System.out.println("White's turn");
-                    move = ai2.decideMove(state);
+                    move = white.decideMove(state);
                 }
-                state.insertToken(move);
+            
+                    state.insertToken(move);    
             }
             int[] terminalState = state.countTokens();
 
@@ -70,24 +73,20 @@ public class OthelloStatistic {
 
         // Handles printing and file writing
         if(!writeToFile) {
-            System.out.printf("---------\nAI Depth %d\nBlack won: %d\nWhite won: %d\nDraws: %d\n", depth, blackWon,whiteWon,draws);
+            System.out.printf("---------\nBlack AI Depth %d\nWhite AI Depth %d\nBlack won: %d\nWhite won: %d\nDraws: %d\n", 
+                ai1Depth, ai2Depth, blackWon,whiteWon,draws);
             System.out.printf("The average number of white tokens at the end of a game was: %d\n", averageWhiteTokens);
             System.out.printf("The average number of black tokens at the end of a game was: %d\n", averageBlackTokens);
-            System.out.printf("The average time it took for a search was: %d\n", aiTimer.getAverage());
-            System.out.printf("The maximum time it took for a search was: %d\n", aiTimer.getMaxTime());
-            System.out.printf("The minimum time it took for a search was: %d\n", aiTimer.getMinTime());
         }
         else {
             try {
-                FileWriter writer = new FileWriter("./statistics/Statistics.txt", true);
+                FileWriter writer = new FileWriter("./statistics/AIVSAI_Statistics.txt", true);
                 var bf = new BufferedWriter(writer);
                 PrintWriter out = new PrintWriter(bf);
-                out.print(String.format("---------\nAI Depth %d\nBlack won: %d\nWhite won: %d\nDraws: %d\n", depth, blackWon,whiteWon,draws));
+                out.print(String.format("---------\nBlack AI Depth %d\nWhite AI Depth %d\nBlack won: %d\nWhite won: %d\nDraws: %d\n", 
+                    ai1Depth, ai2Depth, blackWon,whiteWon,draws));
                 out.print(String.format("The average number of white tokens at the end of a game was: %d\n", averageWhiteTokens));
                 out.print(String.format("The average number of black tokens at the end of a game was: %d\n", averageBlackTokens));
-                out.printf("The average time it took for a search was: %d\n", aiTimer.getAverage());
-                out.printf("The maximum time it took for a search was: %d\n", aiTimer.getMaxTime());
-                out.printf("The minimum time it took for a search was: %d\n", aiTimer.getMinTime());
                 bf.close();
             } catch (IOException e) {
                 // TODO Auto-generated catch block
