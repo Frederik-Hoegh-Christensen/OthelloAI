@@ -3,8 +3,8 @@ import java.util.Date;
 public class AI implements IOthelloAI {
     // Config options
     public int maxDepth = 4;        // The maximum search depth of the AI
-    public int cornerWeight = 3;    // The weight a cornertoken has in the evaluation function
-    public int edgeWeight = 2;      // The weight an edge has in the evaluation function
+    public int cornerWeight = 4;    // The weight a cornertoken has in the evaluation function
+    public int edgeWeight = 3;      // The weight an edge has in the evaluation function
     public Timer timer;             // The timer instance
     private boolean max = false;    // Is the player a max or min player?
     
@@ -140,49 +140,69 @@ public class AI implements IOthelloAI {
 
         // check if white has pos next to corners 
         if (board[0][1] == 2) 
-            eval = eval - cornerWeight;
+            eval = eval - cornerWeight - 1;
         if (board[1][0] == 2) 
-            eval = eval - cornerWeight;
+            eval = eval - cornerWeight - 1;
         if (board[0][length-2] == 2) 
-            eval = eval - cornerWeight;
+            eval = eval - cornerWeight - 1;
         if (board[1][length-1] == 2) 
-            eval = eval - cornerWeight;
+            eval = eval - cornerWeight - 1;
         if (board[length-2][0] == 2) 
-            eval = eval - cornerWeight;
+            eval = eval - cornerWeight - 1;
         if (board[length-2][length-1] == 2) 
-            eval = eval - cornerWeight;
+            eval = eval - cornerWeight - 1;
         if (board[length-1][1] == 2) 
-            eval = eval - cornerWeight;
+            eval = eval - cornerWeight - 1;
         if (board[length-1][length-2] == 2) 
-            eval = eval - cornerWeight;
+            eval = eval - cornerWeight - 1;
 
         // check if black has pos next to corners 
         if (board[0][1] == 1) 
-            eval = eval + cornerWeight;
+            eval = eval + cornerWeight + 1;
         if (board[1][0] == 1) 
-            eval = eval + cornerWeight;
+            eval = eval + cornerWeight  + 1;
         if (board[0][length-2] == 1) 
-            eval = eval + cornerWeight;
+            eval = eval + cornerWeight  + 1;
         if (board[1][length-1] == 1) 
-            eval = eval + cornerWeight;
+            eval = eval + cornerWeight  + 1;
         if (board[length-2][0] == 1) 
-            eval = eval + cornerWeight;
+            eval = eval + cornerWeight  + 1;
         if (board[length-2][length-1] == 1) 
-            eval = eval + cornerWeight;
+            eval = eval + cornerWeight + 1;
         if (board[length-1][1] == 1) 
-            eval = eval + cornerWeight;
+            eval = eval + cornerWeight + 1;
         if (board[length-1][length-2] == 1) 
-            eval = eval + cornerWeight;
+            eval = eval + cornerWeight + 1;
 
         
         for (int i = 2; i < length-3; i++) {
+
             // Check if white has pos next to edges
-            if (board[2][i] == 2 || board[length-3][i] == 2 || board[i][2] == 2 || board[i][length-3] == 2) { // white not in good place
-                eval = eval - edgeWeight;
+            if (board[2][i] == 2)  { // white not in good place
+                eval = eval - edgeWeight - 1;
             }
-            // Check if white has pos next to edges
-            else if (board[2][i] == 1 || board[length-3][i] == 1 || board[i][2] == 1 || board[i][length-3] == 1) { // black not in good place
-                eval = eval + edgeWeight;
+            if (board[length-3][i] == 2)  { // white not in good place
+                eval = eval - edgeWeight - 1;
+            }
+            if (board[i][2] == 2)  { // white not in good place
+                eval = eval - edgeWeight - 1;
+            }
+            if (board[i][length-3] == 2)  { // white not in good place
+                eval = eval - edgeWeight - 1;
+            }
+
+            // Check if black has pos next to edges
+            if (board[2][i] == 1)  { // black not in good place
+                eval = eval + edgeWeight + 1;
+            }
+            if (board[length-3][i] == 1)  { // black not in good place
+                eval = eval + edgeWeight + 1;
+            }
+            if (board[i][2] == 1)  { // black not in good place
+                eval = eval + edgeWeight + 1;
+            }
+            if (board[i][length-3] == 1)  { // black not in good place
+                eval = eval + edgeWeight + 1;
             }
         }
         return eval;
@@ -197,8 +217,8 @@ public class AI implements IOthelloAI {
         
         for (Position position : corners) {
             var currentToken = board[position.col][position.row];
-            if(currentToken == 1) eval -= cornerWeight;
-            else if(currentToken == 2) eval += cornerWeight;
+            if(currentToken == 1) eval -= cornerWeight + 1;
+            else if(currentToken == 2) eval += cornerWeight - 1;
         }
 
         return eval;
@@ -212,8 +232,8 @@ public class AI implements IOthelloAI {
 
         for (Position position : edges) {
             var currentToken = board[position.col][position.row];
-            if(currentToken == 1) eval -= edgeWeight;
-            else if(currentToken == 2) eval += edgeWeight;
+            if(currentToken == 1) eval -= edgeWeight + 1;
+            else if(currentToken == 2) eval += edgeWeight - 1;
         }
         return eval;
     }

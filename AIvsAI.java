@@ -9,12 +9,12 @@ public class AIvsAI {
         int whiteDepth = Integer.parseInt(args[1]);
 
         //To disable iterative simulations from depth 1 to aiDepth, comment this for loop out
-        // for (int i = 0; i < aiDepth; i++) {
-        //     playGames(i+1);
-        // }
+        for (int i = 0; i < blackDepth; i++) {
+            playGames(i+1, i+1);
+        }
         
         // And remove the comment below
-        playGames(blackDepth, whiteDepth);
+       //playGames(blackDepth, whiteDepth);
         
     }
 
@@ -23,7 +23,7 @@ public class AIvsAI {
         Timer ai1Timer = new Timer();
         Timer ai2Timer = new Timer();
         IOthelloAI black = new AI(ai1Depth, ai1Timer);	    // The AI for player 1
-        IOthelloAI white = new AI2(ai2Depth, ai2Timer);			// The AI for player 2
+        IOthelloAI white = new AI(ai2Depth, ai2Timer);			// The AI for player 2
         int numberOfGames = 1;            // Number of games to be simulated
         int blackWon = 0;                   // Counter for black wins
         int whiteWon = 0;                   // Counter for white wins
