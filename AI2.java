@@ -1,6 +1,6 @@
 import java.util.Date;
 
-public class AI implements IOthelloAI {
+public class AI2 implements IOthelloAI {
     // Config options
     public int maxDepth = 4;        // The maximum search depth of the AI
     public int cornerWeight = 3;    // The weight a cornertoken has in the evaluation function
@@ -8,11 +8,11 @@ public class AI implements IOthelloAI {
     public Timer timer;             // The timer instance
     private boolean max = false;    // Is the player a max or min player?
     
-    public AI() {
+    public AI2() {
         timer = new Timer();
     }
 
-    public AI(int maxDepth, Timer timer) {
+    public AI2(int maxDepth, Timer timer) {
         this.maxDepth = maxDepth;
         this.timer = timer;
     }
@@ -128,10 +128,6 @@ public class AI implements IOthelloAI {
         // Evaluating edge tokens
         eval = WeighEdgeTokens(s, eval);
 
-        
-        if ((black + white) < (s.getBoard().length / 4)) 
-            return -eval;
-
         return eval;
     }
 
@@ -178,11 +174,10 @@ public class AI implements IOthelloAI {
 
         
         for (int i = 2; i < length-3; i++) {
-            // Check if white has pos next to edges
+            // Check if white has a 
             if (board[2][i] == 2 || board[length-3][i] == 2 || board[i][2] == 2 || board[i][length-3] == 2) { // white not in good place
                 eval = eval - edgeWeight;
             }
-            // Check if white has pos next to edges
             else if (board[2][i] == 1 || board[length-3][i] == 1 || board[i][2] == 1 || board[i][length-3] == 1) { // black not in good place
                 eval = eval + edgeWeight;
             }
