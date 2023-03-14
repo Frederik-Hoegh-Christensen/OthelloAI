@@ -129,8 +129,6 @@ public class AI implements IOthelloAI {
         eval = WeighEdgeTokens(s, eval);
 
         
-        if ((black + white) < (s.getBoard().length / 4)) 
-            return -eval;
 
         return eval;
     }

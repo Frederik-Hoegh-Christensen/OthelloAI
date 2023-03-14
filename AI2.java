@@ -122,11 +122,12 @@ public class AI2 implements IOthelloAI {
         // Initial evaluation
         var eval = white - black;
         // Evaluating the positions next to edges and corners
-        eval = eval + nextToEdge(s);
+        //eval = eval + nextToEdge(s);
         // Evaluating corner tokens
         eval = WeighCornerTokens(s, eval);
         // Evaluating edge tokens
         eval = WeighEdgeTokens(s, eval);
+
 
         return eval;
     }
@@ -175,12 +176,32 @@ public class AI2 implements IOthelloAI {
         
         for (int i = 2; i < length-3; i++) {
             // Check if white has a 
-            if (board[2][i] == 2 || board[length-3][i] == 2 || board[i][2] == 2 || board[i][length-3] == 2) { // white not in good place
+            if (board[2][i] == 2)  { // white not in good place
                 eval = eval - edgeWeight;
             }
-            else if (board[2][i] == 1 || board[length-3][i] == 1 || board[i][2] == 1 || board[i][length-3] == 1) { // black not in good place
+            if (board[length-3][i] == 2)  { // white not in good place
+                eval = eval - edgeWeight;
+            }
+            if (board[i][2] == 2)  { // white not in good place
+                eval = eval - edgeWeight;
+            }
+            if (board[i][length-3] == 2)  { // white not in good place
+                eval = eval - edgeWeight;
+            }
+
+            if (board[2][i] == 1)  { // black not in good place
                 eval = eval + edgeWeight;
             }
+            if (board[length-3][i] == 1)  { // black not in good place
+                eval = eval + edgeWeight;
+            }
+            if (board[i][2] == 1)  { // black not in good place
+                eval = eval + edgeWeight;
+            }
+            if (board[i][length-3] == 1)  { // black not in good place
+                eval = eval + edgeWeight;
+            }
+
         }
         return eval;
 
