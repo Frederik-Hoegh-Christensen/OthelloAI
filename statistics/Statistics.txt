@@ -1,153 +1,110 @@
-Oliver HomePC Stats
-----------
+---------
 AI Depth 1
-Black won: 0
-White won: 20
+Black won: 1
+White won: 0
 Draws: 0
-The average number of white tokens at the end of a game was: 59
-The average number of black tokens at the end of a game was: 5
+The average number of white tokens at the end of a game was: 21
+The average number of black tokens at the end of a game was: 43
 The average time it took for a search was: 0
 The maximum time it took for a search was: 1
 The minimum time it took for a search was: 0
 ---------
 AI Depth 2
 Black won: 0
-White won: 20
+White won: 1
 Draws: 0
-The average number of white tokens at the end of a game was: 51
-The average number of black tokens at the end of a game was: 13
+The average number of white tokens at the end of a game was: 57
+The average number of black tokens at the end of a game was: 7
 The average time it took for a search was: 0
-The maximum time it took for a search was: 2
+The maximum time it took for a search was: 1
 The minimum time it took for a search was: 0
 ---------
 AI Depth 3
 Black won: 0
-White won: 20
+White won: 1
 Draws: 0
-The average number of white tokens at the end of a game was: 38
-The average number of black tokens at the end of a game was: 26
+The average number of white tokens at the end of a game was: 55
+The average number of black tokens at the end of a game was: 9
 The average time it took for a search was: 0
 The maximum time it took for a search was: 3
 The minimum time it took for a search was: 0
 ---------
 AI Depth 4
 Black won: 0
-White won: 20
+White won: 1
 Draws: 0
-The average number of white tokens at the end of a game was: 38
-The average number of black tokens at the end of a game was: 26
-The average time it took for a search was: 1
+The average number of white tokens at the end of a game was: 55
+The average number of black tokens at the end of a game was: 0
+The average time it took for a search was: 2
 The maximum time it took for a search was: 8
 The minimum time it took for a search was: 0
 ---------
 AI Depth 5
 Black won: 0
-White won: 20
+White won: 1
 Draws: 0
-The average number of white tokens at the end of a game was: 53
-The average number of black tokens at the end of a game was: 11
-The average time it took for a search was: 8
-The maximum time it took for a search was: 22
+The average number of white tokens at the end of a game was: 63
+The average number of black tokens at the end of a game was: 0
+The average time it took for a search was: 10
+The maximum time it took for a search was: 46
 The minimum time it took for a search was: 0
 ---------
 AI Depth 6
 Black won: 0
-White won: 20
+White won: 1
 Draws: 0
-The average number of white tokens at the end of a game was: 59
-The average number of black tokens at the end of a game was: 5
-The average time it took for a search was: 32
-The maximum time it took for a search was: 239
+The average number of white tokens at the end of a game was: 42
+The average number of black tokens at the end of a game was: 0
+The average time it took for a search was: 41
+The maximum time it took for a search was: 144
 The minimum time it took for a search was: 0
 ---------
 AI Depth 7
 Black won: 0
-White won: 20
+White won: 1
 Draws: 0
-The average number of white tokens at the end of a game was: 54
-The average number of black tokens at the end of a game was: 1
-The average time it took for a search was: 108
-The maximum time it took for a search was: 707
-The minimum time it took for a search was: 0
-
-Oliver Laptop Stats
----------
-AI Depth 1
-Black won: 0
-White won: 20
-Draws: 0
-The average number of white tokens at the end of a game was: 59
-The average number of black tokens at the end of a game was: 5
-The average time it took for a search was: 0
-The maximum time it took for a search was: 2
+The average number of white tokens at the end of a game was: 58
+The average number of black tokens at the end of a game was: 6
+The average time it took for a search was: 87
+The maximum time it took for a search was: 509
 The minimum time it took for a search was: 0
 ---------
-AI Depth 2
+AI Depth 8
 Black won: 0
-White won: 20
-Draws: 0
-The average number of white tokens at the end of a game was: 51
-The average number of black tokens at the end of a game was: 13
-The average time it took for a search was: 0
-The maximum time it took for a search was: 3
-The minimum time it took for a search was: 0
----------
-AI Depth 3
-Black won: 0
-White won: 20
-Draws: 0
-The average number of white tokens at the end of a game was: 38
-The average number of black tokens at the end of a game was: 26
-The average time it took for a search was: 0
-The maximum time it took for a search was: 4
-The minimum time it took for a search was: 0
----------
-AI Depth 4
-Black won: 0
-White won: 20
-Draws: 0
-The average number of white tokens at the end of a game was: 38
-The average number of black tokens at the end of a game was: 26
-The average time it took for a search was: 2
-The maximum time it took for a search was: 33
-The minimum time it took for a search was: 0
----------
-AI Depth 5
-Black won: 0
-White won: 20
+White won: 1
 Draws: 0
 The average number of white tokens at the end of a game was: 53
-The average number of black tokens at the end of a game was: 11
-The average time it took for a search was: 10
-The maximum time it took for a search was: 47
+The average number of black tokens at the end of a game was: 1
+The average time it took for a search was: 426
+The maximum time it took for a search was: 1741
 The minimum time it took for a search was: 0
 ---------
-AI Depth 6
+AI Depth 9
 Black won: 0
-White won: 20
+White won: 1
 Draws: 0
-The average number of white tokens at the end of a game was: 59
-The average number of black tokens at the end of a game was: 5
-The average time it took for a search was: 40
-The maximum time it took for a search was: 362
+The average number of white tokens at the end of a game was: 48
+The average number of black tokens at the end of a game was: 0
+The average time it took for a search was: 3316
+The maximum time it took for a search was: 11976
 The minimum time it took for a search was: 0
 ---------
-AI Depth 8
+AI Depth 10
 Black won: 0
-White won: 20
+White won: 1
 Draws: 0
-The average number of white tokens at the end of a game was: 55
-The average number of black tokens at the end of a game was: 9
-The average time it took for a search was: 140
-The maximum time it took for a search was: 853
+The average number of white tokens at the end of a game was: 63
+The average number of black tokens at the end of a game was: 0
+The average time it took for a search was: 11501
+The maximum time it took for a search was: 72285
 The minimum time it took for a search was: 0
 ---------
-AI Depth 8
+AI Depth 10
 Black won: 0
-White won: 20
+White won: 1
 Draws: 0
-The average number of white tokens at the end of a game was: 55
-The average number of black tokens at the end of a game was: 9
-The average time it took for a search was: 176
-The maximum time it took for a search was: 1242
+The average number of white tokens at the end of a game was: 63
+The average number of black tokens at the end of a game was: 0
+The average time it took for a search was: 11454
+The maximum time it took for a search was: 71965
 The minimum time it took for a search was: 0

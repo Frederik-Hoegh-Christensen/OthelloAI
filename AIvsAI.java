@@ -9,12 +9,12 @@ public class AIvsAI {
         int whiteDepth = Integer.parseInt(args[1]);
 
         //To disable iterative simulations from depth 1 to aiDepth, comment this for loop out
-        for (int i = 0; i < blackDepth; i++) {
-            playGames(i+1, i+1);
-        }
+        // for (int i = 0; i < blackDepth; i++) {
+        //     playGames(i+1, i+1);
+        // }
         
         // And remove the comment below
-       //playGames(blackDepth, whiteDepth);
+       playGames(blackDepth, whiteDepth);
         
     }
 

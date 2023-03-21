@@ -2,8 +2,8 @@ import java.util.Date;
 
 public class AI implements IOthelloAI {
     // Config options
-    public int maxDepth = 4;        // The maximum search depth of the AI
-    public int cornerWeight = 4;    // The weight a cornertoken has in the evaluation function
+    public int maxDepth = 9;        // The maximum search depth of the AI
+    public int cornerWeight = 10;    // The weight a cornertoken has in the evaluation function
     public int edgeWeight = 3;      // The weight an edge has in the evaluation function
     public Timer timer;             // The timer instance
     private boolean max = false;    // Is the player a max or min player?
@@ -124,6 +124,7 @@ public class AI implements IOthelloAI {
         // If the game is done we do not care where the tokens are, so just return the token difference
         if(s.isFinished()) return eval;
         // Evaluating the positions next to edges and corners
+        // Should be commented out for reasons described in the report
         //eval = eval + nextToEdge(s);
         // Evaluating corner tokens
         eval = WeighCornerTokens(s, eval);
@@ -133,6 +134,7 @@ public class AI implements IOthelloAI {
         return eval;
     }
 
+    // Never called but we discuss the function in our report
     private int nextToEdge(GameState s) {
         int length = s.getBoard().length;
         int[][] board = s.getBoard();
@@ -209,6 +211,8 @@ public class AI implements IOthelloAI {
 
     }
 
+    // Given a game state and an evaluation, returns the eval
+    // where each cornertoken counts for the value of cornerWeight
     private int WeighCornerTokens(GameState s, int eval){
         int size = s.getBoard().length;
         int[][] board = s.getBoard();
@@ -224,6 +228,8 @@ public class AI implements IOthelloAI {
         return eval;
     }
     
+    // Given a game state and an evaluation, returns the eval
+    // where each edgetoken counts for the value of edgeWeight
     private int WeighEdgeTokens(GameState s, int eval) {
         int size = s.getBoard().length;
         int[][] board = s.getBoard();
