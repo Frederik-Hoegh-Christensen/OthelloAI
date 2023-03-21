@@ -2,7 +2,7 @@ import java.util.Date;
 
 public class AI2 implements IOthelloAI {
     // Config options
-    public int maxDepth = 4;        // The maximum search depth of the AI
+    public int maxDepth = 8;        // The maximum search depth of the AI
     public int cornerWeight = 10;    // The weight a cornertoken has in the evaluation function
     public int edgeWeight = 8;      // The weight an edge has in the evaluation function
     public Timer timer;             // The timer instance
@@ -121,8 +121,10 @@ public class AI2 implements IOthelloAI {
 
         // Initial evaluation
         var eval = white - black;
+        // If the game is done we do not care where the tokens are, so just return the token difference
+        if(s.isFinished()) return eval;
         // Evaluating the positions next to edges and corners
-        eval = eval + nextToEdge(s);
+        //eval = eval + nextToEdge(s);
         // Evaluating corner tokens
         eval = WeighCornerTokens(s, eval);
         // Evaluating edge tokens

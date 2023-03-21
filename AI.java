@@ -121,14 +121,14 @@ public class AI implements IOthelloAI {
 
         // Initial evaluation
         var eval = white - black;
+        // If the game is done we do not care where the tokens are, so just return the token difference
+        if(s.isFinished()) return eval;
         // Evaluating the positions next to edges and corners
-        eval = eval + nextToEdge(s);
+        //eval = eval + nextToEdge(s);
         // Evaluating corner tokens
         eval = WeighCornerTokens(s, eval);
         // Evaluating edge tokens
         eval = WeighEdgeTokens(s, eval);
-
-        
 
         return eval;
     }

@@ -18,12 +18,12 @@ public class AIvsAI {
         
     }
 
-    private static void playGames(int ai1Depth, int ai2Depth) {
+    private static void playGames(int blackDepth, int whiteDepth) {
         int size = 8;				        // Number of rows and columns on the board
-        Timer ai1Timer = new Timer();
-        Timer ai2Timer = new Timer();
-        IOthelloAI black = new AI(ai1Depth, ai1Timer);	    // The AI for player 1
-        IOthelloAI white = new AI(ai2Depth, ai2Timer);			// The AI for player 2
+        Timer blackTimer = new Timer();
+        Timer whiteTimer = new Timer();
+        IOthelloAI black = new AI(blackDepth, blackTimer);	    // The AI for player 1
+        IOthelloAI white = new AI2(whiteDepth, whiteTimer);			// The AI for player 2
         int numberOfGames = 1;            // Number of games to be simulated
         int blackWon = 0;                   // Counter for black wins
         int whiteWon = 0;                   // Counter for white wins
@@ -74,9 +74,11 @@ public class AIvsAI {
         // Handles printing and file writing
         if(!writeToFile) {
             System.out.printf("---------\nBlack AI Depth %d\nWhite AI Depth %d\nBlack won: %d\nWhite won: %d\nDraws: %d\n", 
-                ai1Depth, ai2Depth, blackWon,whiteWon,draws);
+                blackDepth, whiteDepth, blackWon,whiteWon,draws);
             System.out.printf("The average number of white tokens at the end of a game was: %d\n", averageWhiteTokens);
             System.out.printf("The average number of black tokens at the end of a game was: %d\n", averageBlackTokens);
+            System.out.printf("The average time white took per move was %d\n", whiteTimer.getAverage());
+            System.out.printf("The average time black took per move was %d\n", blackTimer.getAverage());
         }
         else {
             try {
@@ -84,7 +86,7 @@ public class AIvsAI {
                 var bf = new BufferedWriter(writer);
                 PrintWriter out = new PrintWriter(bf);
                 out.print(String.format("---------\nBlack AI Depth %d\nWhite AI Depth %d\nBlack won: %d\nWhite won: %d\nDraws: %d\n", 
-                    ai1Depth, ai2Depth, blackWon,whiteWon,draws));
+                    blackDepth, whiteDepth, blackWon,whiteWon,draws));
                 out.print(String.format("The average number of white tokens at the end of a game was: %d\n", averageWhiteTokens));
                 out.print(String.format("The average number of black tokens at the end of a game was: %d\n", averageBlackTokens));
                 bf.close();

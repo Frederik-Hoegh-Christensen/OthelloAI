@@ -9,7 +9,7 @@ import java.io.PrintWriter;
  */
 public class OthelloStatistic {
     public static void main(String[] args) {
-        int aiDepth = 8;
+        int aiDepth = Integer.parseInt(args[0]);
 
         //To disable iterative simulations from depth 1 to aiDepth, comment this for loop out
         // for (int i = 0; i < aiDepth; i++) {
@@ -24,8 +24,8 @@ public class OthelloStatistic {
     private static void playGames(int depth) {
         int size = 8;				        // Number of rows and columns on the board
         Timer aiTimer = new Timer();
-        IOthelloAI ai1 = new DumAI();	    // The AI for player 1
-        IOthelloAI ai2 = new AI(depth, aiTimer);			// The AI for player 2
+        IOthelloAI ai1 = new DumAI();	                    // The AI for player 1
+        IOthelloAI ai2 = new AI2(depth, aiTimer);			// The AI for player 2
         int numberOfGames = 1;            // Number of games to be simulated
         int blackWon = 0;                   // Counter for black wins
         int whiteWon = 0;                   // Counter for white wins
