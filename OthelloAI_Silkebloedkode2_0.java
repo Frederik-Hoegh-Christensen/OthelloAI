@@ -1,6 +1,6 @@
 import java.util.Date;
 
-public class AI implements IOthelloAI {
+public class OthelloAI_Silkebloedkode2_0 implements IOthelloAI {
     // Config options
     public int maxDepth = 9;        // The maximum search depth of the AI
     public int cornerWeight = 10;    // The weight a cornertoken has in the evaluation function
@@ -8,11 +8,11 @@ public class AI implements IOthelloAI {
     public Timer timer;             // The timer instance
     private boolean max = false;    // Is the player a max or min player?
     
-    public AI() {
+    public OthelloAI_Silkebloedkode2_0() {
         timer = new Timer();
     }
 
-    public AI(int maxDepth, Timer timer) {
+    public OthelloAI_Silkebloedkode2_0(int maxDepth, Timer timer) {
         this.maxDepth = maxDepth;
         this.timer = timer;
     }

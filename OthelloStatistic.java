@@ -25,7 +25,7 @@ public class OthelloStatistic {
         int size = 8;				        // Number of rows and columns on the board
         Timer aiTimer = new Timer();
         IOthelloAI ai1 = new DumAI();	                    // The AI for player 1
-        IOthelloAI ai2 = new AI(depth, aiTimer);			// The AI for player 2
+        IOthelloAI ai2 = new OthelloAI_Silkebloedkode2_0(depth, aiTimer);			// The AI for player 2
         int numberOfGames = 1;            // Number of games to be simulated
         int blackWon = 0;                   // Counter for black wins
         int whiteWon = 0;                   // Counter for white wins

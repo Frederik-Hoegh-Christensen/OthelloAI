@@ -22,7 +22,7 @@ public class AIvsAI {
         int size = 8;				        // Number of rows and columns on the board
         Timer blackTimer = new Timer();
         Timer whiteTimer = new Timer();
-        IOthelloAI black = new AI(blackDepth, blackTimer);	    // The AI for player 1
+        IOthelloAI black = new OthelloAI_Silkebloedkode2_0(blackDepth, blackTimer);	    // The AI for player 1
         IOthelloAI white = new AI2(whiteDepth, whiteTimer);			// The AI for player 2
         int numberOfGames = 1;            // Number of games to be simulated
         int blackWon = 0;                   // Counter for black wins
